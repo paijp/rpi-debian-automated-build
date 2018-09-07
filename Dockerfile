@@ -13,7 +13,7 @@ RUN set -x &&\
 
 FROM scratch
 
-COPY --from=0 /armroot/* /
+COPY --from=0 /armroot /
 SHELL ["/bin/dash-x86", "-c"]
 
 RUN set -x &&\
