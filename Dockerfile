@@ -22,6 +22,7 @@ FROM scratch
 
 #COPY --from=build /armroot/* /
 ADD --from=0 /armroot.tar.gz /
+SHELL ["/bin/dash-x86", "-c"]
 
 RUN set -x &&\
 	/usr/local/bin/qemu-user-static-execmyself /bin/rm /bin/dash &&\
