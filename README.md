@@ -1,5 +1,5 @@
 # rpi-debian-automated-build
-Docker automated build raspberry-pi image sample using qemu-user-static-execmyself.
+'Docker automated build raspberry-pi image sample' using qemu-user-static-execmyself.
 
 ## important.
 - `/bin/dash`(symbolic-linked from /bin/sh) is an ARM-binary.
