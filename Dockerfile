@@ -3,7 +3,7 @@ FROM qemu-user-static-execmyself AS build
 RUN set -x &&\
 	debootstrap --arch=armhf --foreign jessie /armroot/
 #	debootstrap --arch=armhf --foreign wheezy /armroot/
-#	debootstrap --arch=armhf --keyring=/usr/share/keyrings/raspbian-archive-keyring.gpg --foreign jessie . http://archive.raspbian.org/raspbian
+#	debootstrap --arch=armhf --keyring=/usr/share/keyrings/raspbian-archive-keyring.gpg --foreign jessie /armroot/ http://archive.raspbian.org/raspbian
 
 #COPY debootstrap_nomount.patch /armroot/debootstrap/
 
