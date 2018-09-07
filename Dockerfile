@@ -10,12 +10,13 @@ RUN set -x &&\
 
 RUN set -x &&\
 	cd /armroot/bin &&\
-	mv dash dash-arm &&\
-	cp dash-x86 dash &&\
 	cd /armroot/debootstrap &&\
 	patch functions debootstrap_nomount.patch &&\
 	cd /armroot &&\
 	tar cfz ../armroot.tar.gz .
+
+#	mv dash dash-arm &&\
+#	cp dash-x86 dash &&\
 
 FROM scratch
 #FROM scratch AS armroot
