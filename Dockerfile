@@ -25,12 +25,11 @@ ADD --from=0 /armroot.tar.gz /
 SHELL ["/bin/dash-x86", "-c"]
 
 RUN set -x &&\
-	/usr/local/bin/qemu-user-static-execmyself /bin/rm /bin/dash &&\
-	/usr/local/bin/qemu-user-static-execmyself /bin/cp /bin/dash-arm /bin/dash &&\
 	/usr/local/bin/qemu-user-static-execmyself debootstrap/debootstrap --second-stage
 
-COPY --from=armroot /bin/dash-x86 /bin/dash
+#	/usr/local/bin/qemu-user-static-execmyself /bin/rm /bin/dash &&\
+#	/usr/local/bin/qemu-user-static-execmyself /bin/cp /bin/dash-arm /bin/dash &&\
+#COPY --from=armroot /bin/dash-x86 /bin/dash
+
 RUN set -x &&\
-	/usr/local/bin/qemu-user-static-execmyself /bin/rm /bin/dash &&\
-	/usr/local/bin/qemu-user-static-execmyself /bin/cp /bin/dash-arm /bin/dash &&\
 	/usr/local/bin/qemu-user-static-execmyself /usr/bin/apt-get update
