@@ -1,4 +1,5 @@
-FROM paijp/qemu-user-static-execmyself AS build
+FROM paijp/qemu-user-static-execmyself
+#FROM paijp/qemu-user-static-execmyself AS build
 
 RUN set -x &&\
 	debootstrap --arch=armhf --foreign jessie /armroot/
@@ -12,11 +13,15 @@ RUN set -x &&\
 	mv dash dash-arm &&\
 	cp dash-x86 dash &&\
 	cd /armroot/debootstrap &&\
-	patch functions debootstrap_nomount.patch
+	patch functions debootstrap_nomount.patch &&\
+	cd /armroot &&\
+	tar cfz ../armroot.tar.gz .
 
-FROM scratch AS armroot
+FROM scratch
+#FROM scratch AS armroot
 
-COPY --from=build /armroot/* /
+#COPY --from=build /armroot/* /
+ADD --from=0 /armroot.tar.gz /
 
 RUN set -x &&\
 	/usr/local/bin/qemu-user-static-execmyself /bin/rm /bin/dash &&\
